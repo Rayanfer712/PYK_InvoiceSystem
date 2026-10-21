@@ -2,5 +2,88 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Only test for now</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Simple Test Page</title>
+    <style>
+        :root {
+            --color-accent: #C30E30;/* Light red */
+            --color-accent-dark: #940B25;/* Dark red */
+            --color-background: #D9D9D9;/* PYK White */
+            --top-bar-height: 64px; /* Top bar light red border */
+            --top-bar-border-height: 12px;  /* Top bar dark red border */
+            --layout-gap: clamp(16px, 3vh, 24px);
+            --page-gutter: 24px;
+            --content-width: 1000px;
+            --box-radius: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            height: 100vh;
+            height: 100dvh;
+            margin: 0;
+            flex-direction: column;
+            background-color: var(--color-background);
+            font-family: Arial, sans-serif;
+        }
+
+        .top-bar {
+            position: relative;
+            height: calc(var(--top-bar-height) + var(--top-bar-border-height));
+            flex: 0 0 calc(var(--top-bar-height) + var(--top-bar-border-height));
+            border-bottom: var(--top-bar-border-height) solid var(--color-accent-dark);
+            background-color: var(--color-accent);
+        }
+
+        .top-bar-image {
+            position: absolute;
+            top: 0;
+            left: var(--page-gutter);
+            width: 96px;
+            height: 80px;
+        }
+
+        .page-content {
+            display: grid;
+            min-height: 0;
+            padding: var(--layout-gap) var(--page-gutter) 0;
+            flex: 1;
+            grid-template-rows: auto minmax(0, 1fr);
+            justify-items: center;
+            gap: var(--layout-gap);
+        }
+
+        .box {
+            width: min(100%, var(--content-width));
+            background-color: var(--color-accent);
+        }
+
+        .top-box {
+            height: clamp(64px, 18vh, 200px);
+            border-radius: var(--box-radius);
+        }
+
+        .center-box {
+            min-height: 0;
+            border-radius: var(--box-radius) var(--box-radius) 0 0;
+        }
+    </style>
 </head>
+<body>
+    <header class="top-bar" aria-label="Top bar">
+        <img
+            class="top-bar-image"
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 80'%3E%3Crect width='96' height='80' rx='12' fill='%23D9D9D9'/%3E%3Ccircle cx='48' cy='40' r='24' fill='%23C30E30'/%3E%3Cpath d='M48 22l5.5 11.2 12.3 1.8-8.9 8.7 2.1 12.3L48 50.2l-11 5.8 2.1-12.3-8.9-8.7 12.3-1.8z' fill='%23D9D9D9'/%3E%3C/svg%3E"
+            alt="Test graphic"
+        >
+    </header>
+    <main class="page-content">
+        <section class="box top-box" aria-label="Top box"></section>
+        <section class="box center-box" aria-label="Centered box"></section>
+    </main>
+</body>
+</html>
