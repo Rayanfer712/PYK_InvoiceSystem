@@ -9,12 +9,15 @@
             --color-accent: #C30E30;/* Light red */
             --color-accent-dark: #940B25;/* Dark red */
             --color-background: #D9D9D9;/* PYK White */
+            --color-backdrop: rgb(0 0 0 / 24%);
             --top-bar-height: 64px; /* Top bar light red border */
             --top-bar-border-height: 12px;  /* Top bar dark red border */
             --layout-gap: clamp(16px, 3vh, 24px);
             --page-gutter: 24px;
             --content-width: 1000px;
             --box-radius: 12px;
+            --sidebar-width: 320px;
+            --control-size: 44px;
         }
 
         * {
@@ -37,6 +40,80 @@
             flex: 0 0 calc(var(--top-bar-height) + var(--top-bar-border-height));
             border-bottom: var(--top-bar-border-height) solid var(--color-accent-dark);
             background-color: var(--color-accent);
+        }
+
+        .sidebar-toggle {
+            position: absolute;
+            top: 10px;
+            right: var(--page-gutter);
+            display: grid;
+            width: var(--control-size);
+            height: var(--control-size);
+            padding: 0;
+            place-items: center;
+            border: 0;
+            border-radius: 12px;
+            background-color: var(--color-accent-dark);
+            color: white;
+            cursor: pointer;
+            z-index: 30;
+        }
+
+        .sidebar-toggle:focus-visible {
+            outline: 3px solid white;
+            outline-offset: 3px;
+        }
+
+        .sidebar-backdrop {
+            position: fixed;
+            inset: 0;
+            background-color: var(--color-backdrop);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 200ms ease, visibility 200ms ease;
+            visibility: hidden;
+            z-index: 10;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: min(var(--sidebar-width), 85vw);
+            height: 100vh;
+            height: 100dvh;
+            padding: 80px 24px 24px;
+            border-right: 1px solid var(--color-accent-dark);
+            background-color: var(--color-background);
+            transform: translateX(100%);
+            transition: transform 200ms ease, visibility 200ms ease;
+            visibility: hidden;
+            z-index: 20;
+        }
+
+        .sidebar-top-cover {
+            position: absolute;
+            inset: 0 0 auto;
+            height: calc(var(--top-bar-height) + var(--top-bar-border-height));
+            background-color: var(--color-accent);
+        }
+
+        body.sidebar-open .sidebar-backdrop {
+            opacity: 1;
+            pointer-events: auto;
+            visibility: visible;
+        }
+
+        body.sidebar-open .sidebar {
+            transform: translateX(0);
+            visibility: visible;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .sidebar-backdrop,
+            .sidebar {
+                transition-duration: 0.01ms;
+            }
         }
 
         .top-bar-image {
@@ -80,10 +157,50 @@
             src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 80'%3E%3Crect width='96' height='80' rx='12' fill='%23D9D9D9'/%3E%3Ccircle cx='48' cy='40' r='24' fill='%23C30E30'/%3E%3Cpath d='M48 22l5.5 11.2 12.3 1.8-8.9 8.7 2.1 12.3L48 50.2l-11 5.8 2.1-12.3-8.9-8.7 12.3-1.8z' fill='%23D9D9D9'/%3E%3C/svg%3E"
             alt="Test graphic"
         >
+        <button
+            class="sidebar-toggle"
+            type="button"
+            aria-label="Open sidebar"
+            aria-controls="page-sidebar"
+            aria-expanded="false"
+        >
+            <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
+                <path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+            </svg>
+        </button>
     </header>
     <main class="page-content">
         <section class="box top-box" aria-label="Top box"></section>
         <section class="box center-box" aria-label="Centered box"></section>
     </main>
+    <div class="sidebar-backdrop" aria-hidden="true"></div>
+    <aside class="sidebar" id="page-sidebar" aria-label="Sidebar" aria-hidden="true" inert>
+        <div class="sidebar-top-cover" aria-hidden="true"></div>
+    </aside>
+    <script>
+        const sidebarToggle = document.querySelector(".sidebar-toggle");
+        const sidebarBackdrop = document.querySelector(".sidebar-backdrop");
+        const sidebar = document.querySelector(".sidebar");
+
+        function setSidebarOpen(isOpen) {
+            document.body.classList.toggle("sidebar-open", isOpen);
+            sidebarToggle.setAttribute("aria-expanded", String(isOpen));
+            sidebarToggle.setAttribute("aria-label", isOpen ? "Close sidebar" : "Open sidebar");
+            sidebar.setAttribute("aria-hidden", String(!isOpen));
+            sidebar.inert = !isOpen;
+        }
+
+        sidebarToggle.addEventListener("click", () => {
+            setSidebarOpen(sidebarToggle.getAttribute("aria-expanded") !== "true");
+        });
+
+        sidebarBackdrop.addEventListener("click", () => setSidebarOpen(false));
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                setSidebarOpen(false);
+            }
+        });
+    </script>
 </body>
 </html>
