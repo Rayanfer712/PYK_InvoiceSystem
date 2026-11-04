@@ -3,14 +3,42 @@ export function SidebarComponent() {
         <div class="sidebar-backdrop" aria-hidden="true"></div>
         <aside class="sidebar" id="page-sidebar" aria-label="Sidebar" aria-hidden="true" inert>
             <div class="sidebar-top-cover" aria-hidden="true"></div>
+
+            <div class="sidebar-panel">
+                <div class="sidebar-item profile-card" aria-label="Profile card">
+                    <div class="profile-avatar" aria-hidden="true"></div>
+                    <div class="profile-meta">
+                        <span class="profile-name">John Doe</span>
+                        <span class="profile-company">PYK Company</span>
+                    </div>
+                </div>
+
+                <button class="sidebar-item nav-item" type="button" aria-label="Open settings">
+                    <span class="nav-icon" aria-hidden="true"></span>
+                    <span>Settings</span>
+                </button>
+
+                <button class="sidebar-item nav-item" type="button" aria-label="Open inbox">
+                    <span class="nav-icon" aria-hidden="true"></span>
+                    <span>Inbox</span>
+                </button>
+
+                <button class="sidebar-item nav-item" type="button" aria-label="Open lorem ipsum">
+                    <span class="nav-icon" aria-hidden="true"></span>
+                    <span>Lorem ipsum</span>
+                </button>
+            </div>
         </aside>
     `;
 
     function attachListeners() {
-        // These selectors now work because this function runs AFTER the HTML is injected
         const sidebarToggle = document.querySelector(".sidebar-toggle");
         const sidebarBackdrop = document.querySelector(".sidebar-backdrop");
         const sidebar = document.querySelector(".sidebar");
+
+        if (!sidebarToggle || !sidebarBackdrop || !sidebar) {
+            return;
+        }
 
         function setSidebarOpen(isOpen) {
             document.body.classList.toggle("sidebar-open", isOpen);
