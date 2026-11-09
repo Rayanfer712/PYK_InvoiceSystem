@@ -13,17 +13,28 @@ export function SidebarComponent() {
                     </div>
                 </div>
 
-                <button class="sidebar-item nav-item" type="button" aria-label="Open settings">
+                <div class="sidebar-section-label">PAGES</div>
+                <button class="sidebar-item nav-item" type="button" data-view="user">
+                    <span class="nav-icon" aria-hidden="true"></span>
+                    <span>User Dashboard</span>
+                </button>
+                <button class="sidebar-item nav-item" type="button" data-view="treasury">
+                    <span class="nav-icon" aria-hidden="true"></span>
+                    <span>Treasury</span>
+                </button>
+
+                <div class="sidebar-section-label">OTHER</div>
+                <button class="sidebar-item nav-item" type="button" aria-label="Settings (not implemented yet)" disabled>
                     <span class="nav-icon" aria-hidden="true"></span>
                     <span>Settings</span>
                 </button>
 
-                <button class="sidebar-item nav-item" type="button" aria-label="Open inbox">
+                <button class="sidebar-item nav-item" type="button" aria-label="Inbox (not implemented yet)" disabled>
                     <span class="nav-icon" aria-hidden="true"></span>
                     <span>Inbox</span>
                 </button>
 
-                <button class="sidebar-item nav-item" type="button" aria-label="Open lorem ipsum">
+                <button class="sidebar-item nav-item" type="button" aria-label="Lorem ipsum (not implemented yet)" disabled>
                     <span class="nav-icon" aria-hidden="true"></span>
                     <span>Lorem ipsum</span>
                 </button>
@@ -31,7 +42,7 @@ export function SidebarComponent() {
         </aside>
     `;
 
-    function attachListeners() {
+    function attachListeners(onNavigate = () => {}) {
         const sidebarToggle = document.querySelector(".sidebar-toggle");
         const sidebarBackdrop = document.querySelector(".sidebar-backdrop");
         const sidebar = document.querySelector(".sidebar");
@@ -53,6 +64,13 @@ export function SidebarComponent() {
         });
 
         sidebarBackdrop.addEventListener("click", () => setSidebarOpen(false));
+       
+sidebar.querySelectorAll('[data-view]').forEach((button) => {
+    button.addEventListener('click', () => {
+        onNavigate(button.dataset.view);
+        setSidebarOpen(false);
+    });
+});
 
         document.addEventListener("keydown", (event) => {
             if (event.key === "Escape") {
