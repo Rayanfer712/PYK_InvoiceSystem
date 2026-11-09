@@ -1,6 +1,6 @@
 import { TopBarComponent } from './Views/components/TopBar.js';
 import { SidebarComponent } from './Views/components/SideBar.js';
-import { UserView } from './Views/User/UserView.js';
+import { attachInvoiceModalListeners, UserView } from './Views/User/UserView.js';
 
 const appContainer = document.getElementById('app');
 
@@ -26,6 +26,7 @@ function renderApp() {
     `;
 
     sidebar.attachListeners();
+    attachInvoiceModalListeners();
 }
 
 renderApp();

@@ -7,8 +7,8 @@
         {
             "type": "chrome",
             "request": "launch",
-            "name": "Open test.html",
-            "file": "/Users/kelvinalviero/Documents/GitHub/PYK_InvoiceSystem/test.html"
+            "name": "Open Invoice System",
+            "file": "/Users/kelvinalviero/Documents/GitHub/PYK_InvoiceSystem/project-root/index.html"
         }
     ]
 }
