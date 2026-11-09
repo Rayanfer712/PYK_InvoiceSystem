@@ -1,17 +1,17 @@
-export function SidebarComponent() {
+export function SidebarComponent(onProfileOpen) {
     const html = `
         <div class="sidebar-backdrop" aria-hidden="true"></div>
         <aside class="sidebar" id="page-sidebar" aria-label="Sidebar" aria-hidden="true" inert>
             <div class="sidebar-top-cover" aria-hidden="true"></div>
 
             <div class="sidebar-panel">
-                <div class="sidebar-item profile-card" aria-label="Profile card">
+                <button class="sidebar-item profile-card" type="button" aria-label="Open profile">
                     <div class="profile-avatar" aria-hidden="true"></div>
                     <div class="profile-meta">
                         <span class="profile-name">John Doe</span>
                         <span class="profile-company">PYK Company</span>
                     </div>
-                </div>
+                </button>
 
                 <button class="sidebar-item nav-item" type="button" aria-label="Open settings">
                     <span class="nav-icon" aria-hidden="true"></span>
@@ -35,8 +35,9 @@ export function SidebarComponent() {
         const sidebarToggle = document.querySelector(".sidebar-toggle");
         const sidebarBackdrop = document.querySelector(".sidebar-backdrop");
         const sidebar = document.querySelector(".sidebar");
+        const profileCard = document.querySelector(".profile-card");
 
-        if (!sidebarToggle || !sidebarBackdrop || !sidebar) {
+        if (!sidebarToggle || !sidebarBackdrop || !sidebar || !profileCard) {
             return;
         }
 
@@ -53,6 +54,10 @@ export function SidebarComponent() {
         });
 
         sidebarBackdrop.addEventListener("click", () => setSidebarOpen(false));
+        profileCard.addEventListener("click", () => {
+            setSidebarOpen(false);
+            onProfileOpen?.();
+        });
 
         document.addEventListener("keydown", (event) => {
             if (event.key === "Escape") {

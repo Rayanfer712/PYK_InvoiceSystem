@@ -166,6 +166,107 @@ body {
     border: 0;
 }
 
+.profile-page-box {
+    display: flex;
+    width: min(100%, var(--content-width));
+    min-height: 0;
+    height: 100%;
+    grid-row: 1 / -1;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: var(--box-radius) var(--box-radius) 0 0;
+    background-color: var(--color-accent);
+}
+
+.profile-page-header {
+    padding: 18px 24px;
+    background-color: var(--color-accent-dark);
+    color: var(--color-background);
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.profile-page-content {
+    display: flex;
+    min-height: 0;
+    padding: clamp(24px, 5vw, 64px);
+    align-items: center;
+    flex: 1;
+    justify-content: flex-start;
+    gap: 48px;
+}
+
+.profile-page-details {
+    width: min(100%, 520px);
+    order: 2;
+    color: var(--color-background);
+}
+
+.profile-page-details dl {
+    display: grid;
+    margin: 0;
+    gap: 18px;
+}
+
+.profile-page-details dl > div {
+    display: grid;
+    grid-template-columns: minmax(120px, 0.6fr) minmax(0, 1fr);
+    gap: 16px;
+}
+
+.profile-page-details dt {
+    font-weight: 700;
+}
+
+.profile-page-details dd {
+    margin: 0;
+}
+
+.profile-page-avatar {
+    width: clamp(140px, 22vw, 240px);
+    order: 1;
+    aspect-ratio: 1;
+    border: 8px solid var(--color-background);
+    border-radius: 50%;
+    background-color: var(--color-background);
+    flex-shrink: 0;
+}
+
+.profile-page-actions {
+    display: flex;
+    padding: 18px 24px;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.profile-page-actions button {
+    padding: 10px 16px;
+    border: 0;
+    border-radius: 6px;
+    background-color: var(--color-background);
+    color: var(--color-accent-dark);
+    cursor: pointer;
+    font: inherit;
+    font-weight: 700;
+}
+
+@media (max-width: 700px) {
+    .profile-page-content {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .profile-page-avatar {
+        align-self: center;
+    }
+
+    .profile-page-details dl > div {
+        grid-template-columns: 1fr;
+        gap: 4px;
+    }
+}
+
 .invoice-modal-backdrop {
     position: fixed;
     inset: 0;
@@ -207,6 +308,25 @@ body {
 .invoice-modal-header h2 {
     margin: 0;
     font-size: 20px;
+}
+
+.profile-page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.back-home-button {
+    padding: 9px 14px;
+    border: 0;
+    border-radius: 6px;
+    background-color: var(--color-background);
+    color: var(--color-accent-dark);
+    cursor: pointer;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 700;
 }
 
 .invoice-modal-close {
