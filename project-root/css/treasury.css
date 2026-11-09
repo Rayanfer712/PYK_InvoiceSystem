@@ -1,0 +1,313 @@
+/* Treasury dashboard layout, matched to the supplied Figma reference. */
+.treasury-layout {
+    --treasury-top-gap: clamp(34px, 14vh, 73px);
+    display: grid;
+    grid-template-columns: minmax(0, 0.38fr) minmax(0, 0.62fr);
+    gap: clamp(28px, 5.6vw, 72px);
+    width: min(88.3%, 1240px);
+    height: calc(100dvh - var(--top-bar-height) - var(--top-bar-border-height) - var(--treasury-top-gap));
+    min-height: 344px;
+    margin: var(--treasury-top-gap) auto 0;
+    position: relative;
+    left: 7px;
+}
+
+.treasury-list-panel,
+.treasury-detail-panel {
+    min-width: 0;
+    overflow: hidden;
+    border-radius: 12px 12px 0 0;
+    background-color: var(--color-accent);
+}
+
+.treasury-list-panel {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.treasury-list-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 0 0 54px;
+    min-height: 54px;
+    padding: 0 17px 0 11px;
+    border-bottom: 1px solid rgb(255 255 255 / 78%);
+    background-color: var(--color-accent-dark);
+    color: #fff;
+}
+
+.treasury-list-header h1 {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.invoice-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 85px;
+    height: 23px;
+    padding: 0 12px;
+    border-radius: 20px;
+    background-color: var(--color-success);
+    color: #fff;
+    font-size: 10px;
+    white-space: nowrap;
+}
+
+.invoice-list {
+    /* Keep scrolling inside the invoice column, not on the whole page. */
+    min-height: 0;
+    height: 0;
+    flex: 1 1 auto;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    overscroll-behavior-y: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-gutter: stable;
+    padding: 0 4px 18px 0;
+    scrollbar-width: thin;
+    scrollbar-color: #f2a1b0 rgb(255 255 255 / 14%);
+}
+
+.invoice-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.invoice-list::-webkit-scrollbar-track {
+    border-radius: 8px;
+    background-color: rgb(255 255 255 / 14%);
+}
+
+.invoice-list::-webkit-scrollbar-thumb {
+    min-height: 32px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    background-color: #f2a1b0;
+    background-clip: padding-box;
+}
+
+.invoice-list::-webkit-scrollbar-thumb:hover {
+    background-color: #fff;
+    background-clip: padding-box;
+}
+
+.invoice-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 80%;
+    min-height: 76px;
+    margin: 14px auto 16px;
+    padding: 8px 11px 9px;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    background-color: var(--color-accent-dark);
+    color: #fff;
+    text-align: left;
+    cursor: pointer;
+    transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.invoice-card:hover {
+    transform: translateY(-1px);
+}
+
+.invoice-card:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+}
+
+.invoice-card.is-selected {
+    border-color: #fff;
+    box-shadow: 0 0 0 2px rgb(255 255 255 / 16%);
+}
+
+.invoice-card-topline,
+.invoice-card-bottomline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.invoice-document-number,
+.invoice-card-vendor,
+.invoice-card-bottomline {
+    font-size: 10px;
+    line-height: 1.25;
+}
+
+.invoice-card-status,
+.invoice-card-bottomline strong {
+    color: #00C879;
+    font-size: 9px;
+    font-weight: 400;
+}
+
+.invoice-card-vendor {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.invoice-card-bottomline strong {
+    font-size: 9px;
+}
+
+.invoice-skeleton {
+    width: 80%;
+    height: 76px;
+    margin: 0 auto 25px;
+    border-radius: 12px;
+    background-color: var(--color-accent-dark);
+}
+
+.treasury-detail-panel {
+    display: flex;
+    flex-direction: column;
+}
+
+.treasury-detail-header {
+    flex: 0 0 49px;
+    min-height: 49px;
+    border-bottom: 1px solid rgb(255 255 255 / 78%);
+    background-color: var(--color-accent-dark);
+}
+
+.invoice-detail-body {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+    align-items: center;
+    justify-content: center;
+    padding: 0 24px 60px;
+    color: #fff;
+}
+
+.empty-detail-message {
+    margin: 0;
+    font-size: clamp(20px, 2.6vw, 24px);
+    font-weight: 400;
+    text-align: center;
+}
+
+.invoice-detail-content {
+    width: min(100%, 560px);
+    padding: 25px;
+    border-radius: 12px;
+    background-color: var(--color-accent-dark);
+}
+
+.invoice-detail-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgb(255 255 255 / 24%);
+}
+
+.detail-eyebrow {
+    margin: 0 0 8px;
+    color: rgb(255 255 255 / 72%);
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+.invoice-detail-heading h2 {
+    margin: 0;
+    font-size: clamp(17px, 2vw, 22px);
+    font-weight: 600;
+}
+
+.invoice-status {
+    padding: 7px 10px;
+    border-radius: 20px;
+    background-color: var(--color-success);
+    color: #fff;
+    font-size: 10px;
+    white-space: nowrap;
+}
+
+.invoice-detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px 18px;
+    padding-top: 22px;
+}
+
+.detail-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+}
+
+.detail-field span {
+    color: rgb(255 255 255 / 72%);
+    font-size: 11px;
+}
+
+.detail-field strong {
+    overflow-wrap: anywhere;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.detail-field-amount strong {
+    color: #00D17E;
+    font-size: 18px;
+}
+
+@media (max-width: 700px) {
+    .top-bar-image {
+        left: 18px;
+    }
+
+    .treasury-layout {
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
+        width: calc(100% - 32px);
+        height: auto;
+        min-height: 0;
+        margin: 28px auto 24px;
+        left: 0;
+    }
+
+    .treasury-list-panel {
+        height: 300px;
+        flex: 0 0 300px;
+    }
+
+    .treasury-detail-panel {
+        min-height: 340px;
+    }
+
+    .invoice-detail-body {
+        min-height: 290px;
+        padding: 24px 16px;
+    }
+
+    .invoice-detail-content {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 420px) {
+    .invoice-detail-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .invoice-detail-heading {
+        flex-direction: column;
+        gap: 12px;
+    }
+}
