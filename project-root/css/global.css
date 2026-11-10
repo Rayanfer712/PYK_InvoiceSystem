@@ -250,6 +250,59 @@ body {
     font-weight: 700;
 }
 
+.logout-button {
+    background-color: var(--color-accent-dark) !important;
+    color: var(--color-background) !important;
+}
+
+.login-page {
+    display: grid;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding: var(--page-gutter);
+    place-items: center;
+    background-color: var(--color-background);
+}
+
+.login-card {
+    display: grid;
+    width: min(100%, 380px);
+    padding: 32px;
+    gap: 16px;
+    border-radius: var(--box-radius);
+    background-color: var(--color-accent);
+    color: var(--color-background);
+}
+
+.login-card h1 {
+    margin: 0;
+}
+
+.login-card label {
+    font-weight: 700;
+}
+
+.login-card select,
+.login-card button {
+    min-height: 42px;
+    padding: 8px 12px;
+    border: 0;
+    border-radius: 6px;
+    font: inherit;
+}
+
+.login-card select {
+    background-color: var(--color-background);
+    color: var(--color-accent-dark);
+}
+
+.login-card button {
+    background-color: var(--color-accent-dark);
+    color: var(--color-background);
+    cursor: pointer;
+    font-weight: 700;
+}
+
 @media (max-width: 700px) {
     .profile-page-content {
         align-items: stretch;

@@ -39,6 +39,7 @@ export function UserProfileView() {
             <div class="profile-page-actions">
                 <button type="button">Change password</button>
                 <button type="button">Payment</button>
+                <button class="logout-button" type="button">Logout</button>
             </div>
         </section>
     `;
