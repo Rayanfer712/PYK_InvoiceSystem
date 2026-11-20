@@ -311,3 +311,455 @@
         gap: 12px;
     }
 }
+
+
+/* Treasury payment form */
+.invoice-detail-body.has-payment-form {
+    display: block;
+    overflow-y: auto;
+    padding: 12px clamp(14px, 2vw, 24px) 18px;
+    align-items: initial;
+}
+
+.treasury-payment-content {
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+    color: #fff;
+}
+
+.treasury-invoice-summary {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 0 0 4px;
+}
+
+.treasury-summary-main {
+    min-width: 0;
+}
+
+.treasury-document-number {
+    margin: 0 0 5px;
+    color: rgb(255 255 255 / 80%);
+    font-size: 10px;
+}
+
+.treasury-vendor-route {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 5px;
+    font-size: clamp(10px, 1.15vw, 13px);
+}
+
+.treasury-vendor-route strong {
+    font-weight: 500;
+}
+
+.treasury-bank-detail,
+.treasury-po-detail {
+    margin: 5px 0 0;
+    color: rgb(255 255 255 / 76%);
+    font-size: 8px;
+    overflow-wrap: anywhere;
+}
+
+.treasury-summary-amount {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    gap: 5px;
+    text-align: right;
+}
+
+.treasury-summary-amount span {
+    color: rgb(255 255 255 / 80%);
+    font-size: 9px;
+}
+
+.treasury-summary-amount strong {
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.transfer-form {
+    margin-top: 20px;
+    padding: 13px 16px 14px;
+    border-radius: 10px;
+    background-color: var(--color-accent-dark);
+    color: #fff;
+}
+
+.transfer-form h2 {
+    margin: 0 0 12px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.transfer-form-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 14px 16px;
+}
+
+.transfer-field {
+    display: grid;
+    min-width: 0;
+    gap: 5px;
+}
+
+.transfer-field > span,
+.transfer-field-label {
+    color: rgb(255 255 255 / 88%);
+    font-size: 9px;
+}
+
+.transfer-field select,
+.transfer-field input {
+    width: 100%;
+    min-width: 0;
+    height: 30px;
+    padding: 0 10px;
+    border: 0;
+    border-radius: 16px;
+    outline-offset: 2px;
+    background-color: #d9d9d9;
+    color: #292929;
+    font: inherit;
+    font-size: 9px;
+}
+
+.transfer-field select {
+    cursor: pointer;
+}
+
+.transfer-field input::placeholder {
+    color: #666;
+}
+
+.transfer-proof-field {
+    display: grid;
+    min-width: 0;
+    grid-column: 1 / -1;
+    gap: 6px;
+}
+
+.proof-file-card {
+    display: flex;
+    min-width: 0;
+    min-height: 39px;
+    padding: 5px 8px;
+    align-items: center;
+    gap: 9px;
+    border-radius: 8px;
+    background-color: #d9d9d9;
+    color: #252525;
+}
+
+.proof-file-type {
+    display: inline-grid;
+    width: 23px;
+    height: 27px;
+    flex: 0 0 23px;
+    place-items: center;
+    border-radius: 4px;
+    background-color: #ed2638;
+    color: #fff;
+    font-size: 7px;
+    font-weight: 700;
+}
+
+.proof-file-name {
+    min-width: 0;
+    overflow: hidden;
+    flex: 1;
+    font-size: 9px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.proof-file-status {
+    flex-shrink: 0;
+    color: #a33;
+    font-size: 9px;
+}
+
+.proof-file-status.is-ready {
+    color: #008a48;
+}
+
+.proof-choose-button {
+    display: inline-flex;
+    min-height: 25px;
+    padding: 0 10px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    background-color: #fff;
+    color: var(--color-accent-dark);
+    cursor: pointer;
+    font-size: 9px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.proof-choose-button:hover {
+    background-color: #f4e5e8;
+}
+
+.proof-choose-button:focus-within,
+.proof-choose-button:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
+.proof-preview {
+    display: flex;
+    max-height: 110px;
+    margin-top: 4px;
+    padding: 6px;
+    align-items: center;
+    gap: 8px;
+    overflow: hidden;
+    border-radius: 6px;
+    background-color: rgb(255 255 255 / 12%);
+    color: #fff;
+    font-size: 10px;
+    overflow-wrap: anywhere;
+}
+
+.proof-preview[hidden] {
+    display: none;
+}
+
+.proof-preview img {
+    max-width: 100%;
+    max-height: 96px;
+    border-radius: 4px;
+    object-fit: contain;
+}
+
+.proof-help {
+    margin: 5px 0 0;
+    color: rgb(255 255 255 / 68%);
+    font-size: 8px;
+}
+
+.transfer-feedback {
+    display: none;
+    margin: 10px 0 0;
+    font-size: 10px;
+    line-height: 1.45;
+}
+
+.transfer-feedback.is-info {
+    display: block;
+    color: #ffe5a3;
+}
+
+.transfer-form-actions {
+    display: flex;
+    margin-top: 12px;
+    justify-content: flex-end;
+}
+
+.transfer-submit-button {
+    min-height: 32px;
+    padding: 0 18px;
+    border: 0;
+    border-radius: 18px;
+    background-color: var(--color-success);
+    color: #fff;
+    cursor: pointer;
+    font: inherit;
+    font-size: 9px;
+}
+
+.transfer-submit-button:hover {
+    filter: brightness(1.08);
+}
+
+.transfer-submit-button:focus-visible,
+.transfer-field select:focus-visible,
+.transfer-field input:focus-visible,
+.proof-choose-button:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+}
+
+@media (max-width: 700px) {
+    .treasury-invoice-summary {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .treasury-summary-amount {
+        text-align: left;
+    }
+
+    .transfer-form {
+        margin-top: 14px;
+        padding: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .transfer-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .transfer-proof-field {
+        grid-column: auto;
+    }
+
+    .proof-file-card {
+        flex-wrap: wrap;
+    }
+}
+
+
+/* Treasury payment confirmation and immediate reject/cancel action */
+.transfer-form-actions {
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.transfer-reject-button {
+    min-height: 32px;
+    padding: 0 16px;
+    border: 1px solid rgb(255 255 255 / 75%);
+    border-radius: 18px;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    font: inherit;
+    font-size: 9px;
+}
+
+.transfer-reject-button:hover:not(:disabled) {
+    background: rgb(255 255 255 / 12%);
+}
+
+.transfer-submit-button:disabled,
+.transfer-reject-button:disabled {
+    cursor: not-allowed;
+    opacity: .65;
+}
+
+.transfer-feedback.is-danger {
+    display: block;
+    color: #ffd3d9;
+}
+
+.payment-confirmation-backdrop[hidden] {
+    display: none;
+}
+
+.payment-confirmation-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: grid;
+    padding: 20px;
+    place-items: center;
+    background: rgb(20 0 5 / 64%);
+}
+
+.payment-confirmation-dialog {
+    width: min(100%, 420px);
+    padding: 28px 26px 24px;
+    border: 1px solid rgb(255 255 255 / 18%);
+    border-radius: 16px;
+    background: #fff;
+    color: #292929;
+    box-shadow: 0 20px 60px rgb(0 0 0 / 30%);
+    text-align: center;
+    animation: confirmation-pop-in 160ms ease-out;
+}
+
+.payment-confirmation-icon {
+    display: grid;
+    width: 42px;
+    height: 42px;
+    margin: 0 auto 13px;
+    place-items: center;
+    border: 2px solid var(--color-accent);
+    border-radius: 50%;
+    color: var(--color-accent);
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.payment-confirmation-dialog h2 {
+    margin: 0 0 10px;
+    color: #292929;
+    font-size: 18px;
+}
+
+.payment-confirmation-dialog p {
+    margin: 0;
+    color: #555;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.payment-confirmation-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 22px;
+}
+
+.payment-confirmation-actions button {
+    min-width: 112px;
+    min-height: 38px;
+    padding: 0 18px;
+    border: 0;
+    border-radius: 20px;
+    cursor: pointer;
+    font: inherit;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.payment-confirmation-cancel {
+    background: #ededed;
+    color: #444;
+}
+
+.payment-confirmation-accept {
+    background: var(--color-success);
+    color: #fff;
+}
+
+.payment-confirmation-actions button:focus-visible,
+.transfer-reject-button:focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 3px;
+}
+
+@keyframes confirmation-pop-in {
+    from { opacity: 0; transform: translateY(8px) scale(.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (max-width: 480px) {
+    .transfer-form-actions {
+        align-items: stretch;
+        flex-direction: column-reverse;
+    }
+
+    .transfer-form-actions button {
+        width: 100%;
+        min-height: 38px;
+    }
+
+    .payment-confirmation-dialog {
+        padding: 24px 18px 20px;
+    }
+}

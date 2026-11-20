@@ -3,7 +3,7 @@ import { SidebarComponent } from './Views/components/SideBar.js?v=2';
 import { addInvoice, attachInvoiceModalListeners, updateInvoice, UserView } from './Views/User/UserView.js?v=7';
 import { UserProfileView } from './Views/User/UserProfileView.js?v=2';
 import { LoginView } from './Views/Login/LoginView.js';
-import { TreasuryView } from './Views/Treasury/TreasuryView.js?v=1';
+import { TreasuryView } from './Views/Treasury/TreasuryView.js?v=4';
 import { VerificationView } from './Views/AP_Verification/APVeriView.js';
 const appContainer = document.getElementById('app');
 
